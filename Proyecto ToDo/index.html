@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="imagenes/HTML.ico"> 
+    <title>Proyecto ToDo</title>
+    <style>
+        body{
+        color: rgb(252, 195, 7);
+        }
+
+        header{
+        background-color: rgb(145, 148, 153);
+        min-height: 200px;
+        background-image: url('imagenes/tareas-pendientes.png');
+        background-size: cover;
+        background-position: center;
+        }
+        main{
+        width: 80%;
+        margin: 0 auto;
+        }
+
+        #tareas{
+        color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: space-between;
+        }
+
+        #tareas div{
+        margin: 1rem;
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        }
+
+        button{
+            background-color: rgb(0, 10, 10);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+          <h1>Tareas por hacer</h1>
+        </header>
+        <div class="contenedor">
+          <input type="text" id="txt">
+          <button id="ok">Agregar</button>
+        </div>
+        
+        <div id="tareas">
+          
+        </div>
+    </main>
+
+    <script>
+        const contenedor = document.querySelector('.contenedor');
+        const ta = document.querySelector('#tareas');
+        const ok = document.querySelector('#ok');
+        const txt = document.querySelector('#txt');
+
+        ok.addEventListener('click',()=>{
+        let tarea = document.createElement('div');
+        tarea.innerHTML = txt.value +  '<button id="ok">Agregar</button> <button id="borrar">Borrar</button>';
+        ta.appendChild(tarea);
+        })
+
+        ta.addEventListener('click',(e)=>{
+        if( e.target.id === 'ok'){
+            e.target.parentElement.style.textDecoration = 'line-through';
+        }
+        if(e.target.id === 'borrar'){
+            e.target.parentElement.style.display = 'none';
+        }
+        
+        })
+    </script>
+</body>
+</html>
